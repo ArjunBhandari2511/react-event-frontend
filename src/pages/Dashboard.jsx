@@ -46,14 +46,14 @@ const Dashboard = () => {
     const token = sessionStorage.getItem("token");
     if (token) {
       axios
-        .get("http://localhost:5000/api/events/my", {
+        .get("https://react-event-backend.onrender.com/api/events/my", {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => setMyEvents(response.data))
         .catch((error) => console.error("Error fetching my events:", error));
 
       axios
-        .get("http://localhost:5000/api/events")
+        .get("https://react-event-backend.onrender.com/api/events")
         .then((response) => setEvents(response.data))
         .catch((error) => console.error("Error fetching events:", error));
     }
@@ -108,7 +108,7 @@ const Dashboard = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/events/${currentEvent._id}`,
+        `https://react-event-backend.onrender.com/api/events/${currentEvent._id}`,
         formData,
         {
           headers: {
@@ -147,7 +147,7 @@ const Dashboard = () => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/events/${deleteEventId}`,
+        `https://react-event-backend.onrender.com/api/events/${deleteEventId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -173,7 +173,7 @@ const Dashboard = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/events/${eventId}/join`,
+        `https://react-event-backend.onrender.com/api/events/${eventId}/join`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -181,7 +181,7 @@ const Dashboard = () => {
       if (response.status === 200) {
         alert("You have successfully joined the event!");
         const updatedEvents = await axios.get(
-          "http://localhost:5000/api/events"
+          "https://react-event-backend.onrender.com/api/events"
         );
         setEvents(updatedEvents.data);
       }

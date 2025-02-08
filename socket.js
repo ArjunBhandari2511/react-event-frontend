@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 
 // Connect to the WebSocket server
-const socket = io("http://localhost:5000"); // Replace with backend URL
+const socket = io("https://react-event-backend.onrender.com"); // Replace with backend URL
 
 // When connected to the WebSocket server
 socket.on("connect", () => {
