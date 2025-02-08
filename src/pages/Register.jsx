@@ -21,6 +21,8 @@ const Register = () => {
   const navigate = useNavigate();
   const isMobile = useMediaQuery("(max-width: 600px)"); // Responsive breakpoint
 
+  sessionStorage.clear();
+
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
